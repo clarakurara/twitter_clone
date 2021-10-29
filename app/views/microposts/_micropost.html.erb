@@ -1,0 +1,27 @@
+<div class="card my-3 w-100">
+    <div class="row">
+        <div class="col-2">
+            <%= link_to gravatar_for(micropost.user, size: 52), users_path(micropost.user) %>
+        </div>
+        <div class="col-10">
+            <h5 class="card-title">
+               <%= link_to micropost.user.name, micropost.user %> 
+
+            </h5>
+            <p class="card-text"><%= micropost.content%></p>
+            <p class="card-text">
+                <small class="text-muted">
+                    <%= time_ago_in_words(micropost.created_at) %>
+                </small>
+                <% if @user == current_user %>
+                        <%= link_to "Delete", micropost,
+                            method: :delete, 
+                            data: { confirm: "Are you sure?" },
+                            title: micropost.content,
+                            class: 'text-danger'
+                        %>
+                <% end %>
+            </p>
+        </div>
+    </div>
+</div>

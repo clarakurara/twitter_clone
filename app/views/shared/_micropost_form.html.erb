@@ -1,0 +1,6 @@
+<%= form_with(model: @micropost, local: true) do |f| %>
+    <div class="form-group">
+        <%= f.text_area :content, size: "20x5", class: 'form-control', placeholder: "Share your thoughts..."%>
+    </div>
+    <%= f.submit "Post", class: 'btn btn-primary w-100 my-2'%>
+<% end%>

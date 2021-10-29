@@ -1,0 +1,34 @@
+<% provide(:title, 'Home') %>
+<% if logged_in? %>
+    <div class="row mt-5">
+        <div class="col-3">
+            <section>
+                <%= render "shared/user_info"%>
+            </section>
+            <section>
+                <%= render "shared/micropost_form"%>
+            </section>
+        </div>
+        <div class="col-9">
+            <div class="card">
+                <div class="card card-header">
+                    <h1>Microposts</h1>
+                </div>
+                <div class="card-body">
+                    <%= render "shared/feed" %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<% else %>
+<h1 class="pt-5 text-center">Awesome Blog</h1>
+<div class="container pt-5">
+    <div class="jumbotron">
+        <img src="https://c.tenor.com/DSG9ZID25nsAAAAC/hello-there-general-kenobi.gif" class="mx-auto d-block"> 
+        <h1 class="display-4 text-center">Hello, guys!</h1>
+        <p class="lead text-center">Welcome to Awesome Blog</p>
+    </div>
+</div>
+<% end %>
+<%# <p>Welcome to Awesome Blog</p> %>

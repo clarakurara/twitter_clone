@@ -1,0 +1,44 @@
+<% provide(:title, @user.name)%>
+<div class="row pt-5">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                User Information
+            </div>
+            <div class="card-body text-center">
+                <%= gravatar_for @user, size: 52 %>
+                <h5><%= @user.name %></h5>
+                <p><%= @user.email %></p>
+                <hr>
+                <section>
+                    <%= render 'follow_form' if logged_in? %>
+                    <%= render 'shared/stats' %>
+                </section>
+                <% if @user == current_user %>
+                    <div class="card-footer">
+                        <%= render "shared/micropost_form" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                Activity Feeds
+            </div>
+            <div class="card-body">
+                <% if @microposts.any?%>
+                    <%= render @microposts %>
+                    <div class="justify-content-center mt-4">
+                        <%= will_paginate @microposts %>
+                    </div>
+                <% else %>
+                    <h4 class="text-center">No posts found</h4>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
